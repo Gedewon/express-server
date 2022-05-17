@@ -1,0 +1,38 @@
+{
+  "name": "express-API",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Gedewon/express-API.git",
+  "author": "Gedewon <gedewon.hayle.9@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.2",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.3.3",
+    "nanoid": "^3.3.4",
+    "pino": "^7.11.0",
+    "pino-pretty": "^7.6.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/config": "^0.0.41",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/lodash": "^4.14.182",
+    "@types/mongoose": "^5.11.97",
+    "@types/nanoid": "^3.0.0",
+    "@types/node": "^17.0.34",
+    "@types/pino": "^7.0.5",
+    "@types/yup": "^0.29.14",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  }
+}
