@@ -13,11 +13,3 @@ export async function createUserHandler(req: Request, res: Response) {
   }
 }
 
-export async function createUserSessionHandler(req: Request, res: Response) {
-    try {
-      
-    } catch (error) {
-      log.error(error);
-      return res.status(409).send(error);
-    }
-}
