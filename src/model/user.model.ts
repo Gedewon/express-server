@@ -22,10 +22,9 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-UserSchema.methods.comparePassword = async function (candidatePassword : String){
+UserSchema.methods.comparePassword = async function (candidatePassword : string){
     const user = this as UserDocument;
-    return bcrypt.compare(candidatePassword,user.password).catch((e)=>false);
-
+    return bcrypt.compare(candidatePassword,user.password as string).catch((e)=>false);
 }
 
 const User = mongoose.model<UserDocument>("User", UserSchema);
