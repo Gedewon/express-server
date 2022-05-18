@@ -2,11 +2,12 @@ import express from "express";
 import config from "../config/default";
 import log from "./logger";
 import connect from "./db/connect";
+import routes from "./routes";
 const {port ,host ,dbUri} = config;
 const app = express();
-
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
 
 
 app.listen(port,host,()=>{
@@ -14,4 +15,5 @@ app.listen(port,host,()=>{
     // try using logger's as much as possible 
     log.info(`Server listing at http://${host}:${port}`);
     connect();
+    routes(app);
 })
