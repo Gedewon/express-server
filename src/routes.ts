@@ -8,7 +8,5 @@ export default (app: Express) => {
   });
 
   //create a user
-  app.post("/api/user", (req: Request, res: Response) => {
-    console.log(req);
-  });
+  app.post("/api/user", validateRequest(createUserSchema), createUserHandler);
 };
