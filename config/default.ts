@@ -1,5 +1,5 @@
 export default {
     port:1337,
     host:'localhost',
-    dbUri:"mongodb://localhost:27017/express-API"
+    dbUri:"mongodb+srv://express-API:DBV7IYqRmAyVNOfq@cluster0.p2cc4.mongodb.net/?retryWrites=true&w=majority"
 };
