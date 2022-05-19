@@ -4,7 +4,7 @@ import _default from "../../config/default";
 import { UserDocument } from "./user.model";
 
 export interface SessionDocument extends mongoose.Document {
-  user: UserDocument["_id"];
+  user: UserDocument["_id"];   // user serializer kind of value to store in session 
   valid: boolean;
   userAgent: string;
   createdAt: Date;

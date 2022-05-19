@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { get } from "lodash";
 import { createAccessToken } from "../service/session.service";
-
+import {decode} from "../util/jwt.utils"
 export default  async (
   req: Request,
   res: Response,
@@ -16,14 +16,14 @@ export default  async (
 
   if (!createAccessToken) return next();
 
-  const { decode, expired } = decode(accessToken);
+  const { decoded, expired } = decode(accessToken);
 
   /**
    * check and see if user is in that 15m ttl window and append
    */
-  if (decode) {
+  if (decoded) {
     // @ts-ignore
-    req.user = decode;
+    req.user = decoded;
 
     return next();
   }
@@ -43,8 +43,8 @@ export default  async (
       const { decoded } = decode(newAccessToken);
 
       // @ts-ignore
-      req.user = decode;
-      return nex();
+      req.user = decoded;
+      return next();
     }
     return next();
   }
