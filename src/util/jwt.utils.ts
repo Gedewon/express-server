@@ -19,8 +19,8 @@ try{
   log.error(error);
   return { 
     valid: false,
-    expired: error.message === "jwt expired ",
-    decode: null
+    expired: error.message === "jwt expired",
+    decoded: null
   }
 }
 
