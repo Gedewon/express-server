@@ -14,15 +14,22 @@ export async function createUserHandler(req: Request, res: Response) {
   }
 }
 
-export async function getUserHandler(req: Request, res: Response){
-  
-   try{
-     const user = await User.find();
-     return res.status(200).send({user});
-    }catch(error){
-     return res.status(404).send({message:error});
-
-   }
-
-
+export async function getUsersHandler(req: Request, res: Response) {
+  try {
+    const user = await User.find();
+    return res.status(200).send(user );
+  } catch (error) {
+    return res.status(404).send({ message: error });
+  }
 }
+
+export async function getUserHandler(req: Request, res: Response) {
+  try {
+    const user = await User.find({_id:req.params.id});
+    return res.status(200).send(user );
+  } catch (error) {
+    return res.status(404).send({ message: "no user under this id" });
+  }
+}
+
+
