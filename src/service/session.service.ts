@@ -2,26 +2,24 @@ import config from "config";
 import { LeanDocument } from "mongoose";
 import Session, { SessionDocument } from "../model/session.model";
 import { UserDocument } from "../model/user.model";
-import {sign} from "../util/jwt.utils"
-export async function createSession(userId: string ,userAgent:string){
-     const session = await Session.create({user:userId,userAgent:userAgent})
-    return session.toJSON();
+import { sign } from "../util/jwt.utils";
+export async function createSession(userId: string, userAgent: string) {
+  const session = await Session.create({ user: userId, userAgent: userAgent });
+  return session.toJSON();
 }
 
 export function createAccessToken({
-    user,
-    session
-}:{
-    user:any;
-    session: any;
-      
-}){
-    // build and return the new access token 
-    const accessToken = sign(
-        {...user,session:session._id},
-        {expiresIn: config.get("accessTokenTtl")} //make it about 15 minutes 
-    );
+  user,
+  session,
+}: {
+  user: any;
+  session: any;
+}) {
+  // build and return the new access token
+  const accessToken = sign(
+    { ...user, session: session._id },
+    { expiresIn: config.get("accessTokenTtl") } //make it about 15 minutes
+  );
 
-    return accessToken;
-
+  return accessToken;
 }
