@@ -1,5 +1,5 @@
-### check helth status 
-GET   http://localhost:1337/helthcheck
+### check healthcheck
+GET   http://localhost:1337/healthcheck
 
 ### get all user 
 GET   http://localhost:1337/api/users

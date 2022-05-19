@@ -10,7 +10,7 @@ import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
 
 export default (app: Express) => {
-  app.get("/helthcheck", (req:Request, res:Response)=>{
+  app.get("/healthcheck", (req:Request, res:Response)=>{
     res.status(200).send({"message":"Server up and running "})
   });
   app.get("/api/users", getUsersHandler);
