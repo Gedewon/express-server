@@ -1,9 +1,8 @@
 import config from "config";
-import { sign } from "crypto";
 import { LeanDocument } from "mongoose";
 import Session, { SessionDocument } from "../model/session.model";
 import { UserDocument } from "../model/user.model";
-
+import {sign} from "../util/jwt.utils"
 export async function createSession(userId: string ,userAgent:string){
      const session = await Session.create({user:userId,userAgent:userAgent})
     return session.toJSON();
