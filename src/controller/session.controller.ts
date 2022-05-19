@@ -1,5 +1,6 @@
 import log from "../logger";
 import { Request,Response } from "express";
+import { validatePassword } from "../service/user.service";
 
 export async function createUserSessionHandler(req: Request, res: Response) {
     
@@ -10,12 +11,9 @@ export async function createUserSessionHandler(req: Request, res: Response) {
      * 4.creaet refersh token 
      * 5.send refersh and access token back
      */
-    try {
-    } catch (error) {
-      log.error(error);
-      return res.status(409).send(error);
-    }
+    const user = await  validatePassword(req.body);
 
+    if(!user) return res.status(401).send("Invalid username or password");
     
 
 
