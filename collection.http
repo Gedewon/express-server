@@ -1,0 +1,28 @@
+### check helth status 
+GET   http://localhost:1337/helthcheck
+
+### get all user 
+GET   http://localhost:1337/api/users
+
+### get unique user 
+GET   http://localhost:1337/api/users/6450535abd0b223d60e809
+
+
+### creat a user 
+POST http://localhost:1337/api/user
+Content-Type: application/json
+
+{ "name":"myname",
+  "email":"myname@email.com",
+  "password" : "123456",
+  "passwordConfirmation":"123456"
+}
+
+### Generate refersh and acess token 
+POST   http://localhost:1337/api/sessions
+Content-Type: application/json
+
+{
+    "password" : "123456",
+     "email": "myname@email.com"
+}
