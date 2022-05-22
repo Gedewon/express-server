@@ -4,7 +4,7 @@ import {
   getUserHandler,
   getUsersHandler,
 } from "./controller/user.controller";
-import { createUserSessionHandler } from "./controller/session.controller";
+import { createUserSessionHandler, invalidateUserSessionHandler } from "./controller/session.controller";
 import validateRequest from "./middleware/validateRequest";
 import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
@@ -17,7 +17,10 @@ export default (app: Express) => {
   app.get("/api/users/:id", getUserHandler);
 
   //create a user
-  app.post("/api/user", validateRequest(createUserSchema), createUserHandler);
+  app.post("/api/user", 
+  validateRequest(createUserSchema),
+   
+  createUserHandler);
 
   // Login
   app.post(
@@ -25,4 +28,11 @@ export default (app: Express) => {
     validateRequest(createUserSessionSchema),
     createUserSessionHandler
   );
+
+
+
+  // Logout rout 
+  app.delete("/api/session",
+       requiredUserr
+     ,invalidateUserSessionHandler);
 };

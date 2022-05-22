@@ -1,9 +1,10 @@
 import log from "../logger";
 import { Request, Response } from "express";
-import { validatePassword } from "../service/user.service";
+import { updateSession, validatePassword } from "../service/user.service";
 import { createAccessToken, createSession } from "../service/session.service";
 import config from "config";
 import { sign } from "../util/jwt.utils";
+import { get } from "lodash";
 export async function createUserSessionHandler(req: Request, res: Response) {
   /**
    * 1.validate the email and password
@@ -28,4 +29,10 @@ export async function createUserSessionHandler(req: Request, res: Response) {
   }); //1 yr
 
   res.status(200).send({ accessToken, refreshToken });
+}
+
+export const  invalidateUserSessionHandler = async (req:Request ,res:Response) => {
+  const sessionId = get(req,"user.session");
+  await updateSession({_id: sessionId},{valid: false});
+  return res.sendStatus(200);
 }

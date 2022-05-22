@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { omit } from "lodash";
-import { DocumentDefinition, FilterQuery } from "mongoose";
+import { DocumentDefinition, FilterQuery, UpdateQuery } from "mongoose";
+import { SessionDocument } from "../model/session.model";
 import User, { UserDocument } from "../model/user.model";
 
 export async function createUser(input: DocumentDefinition<UserDocument>) {
@@ -29,4 +30,8 @@ export async function validatePassword({
   if (!isValid) return false;
 
   return omit(user.toJSON(), "password");
+}
+
+export const updateSession =async (query:FilterQuery<SessionDocument>,update: UpdateQuery<SessionDocument>) => {
+  
 }
