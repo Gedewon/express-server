@@ -31,7 +31,7 @@ export default (app: Express) => {
 
 
   // Logout rout 
-  app.delete("/api/session",
+  app.delete("/api/sessions",
       requireUser,
       invalidateUserSessionHandler);
 };

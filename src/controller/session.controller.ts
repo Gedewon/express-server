@@ -33,6 +33,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
 
 export const  invalidateUserSessionHandler = async (req:Request ,res:Response) => {
   const sessionId = get(req,"user.session");
+  console.log('sessionId',sessionId);
   await updateSession({_id: sessionId},{valid: false});
   return res.sendStatus(200);
 }

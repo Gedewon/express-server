@@ -8,18 +8,15 @@ export default  async (
   res: Response,
   next: NextFunction
 ) => {
-  console.log('the comming request',req);
   const accessToken = get(req, "headers.authorization", "").replace(
     /^Bearer\s/,
     ""
   );
-  console.log('acessToken',accessToken);
   
   const refershToken = get(req, "headers.x-refersh");
   
-  console.log('refershToken',refershToken);
 
-  if (!createAccessToken) return next();
+  if (!accessToken) return next();
 
   const { decoded, expired } = decode(accessToken);
 
@@ -34,7 +31,7 @@ export default  async (
   }
 
   /** 
-   check if accessToken is expired and refersh token is there
+   check if accessToken is expired and refresh token is there
    then issue new one
    */
 
