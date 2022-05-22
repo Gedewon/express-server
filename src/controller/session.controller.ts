@@ -1,7 +1,7 @@
 import log from "../logger";
 import { Request, Response } from "express";
 import { updateSession, validatePassword } from "../service/user.service";
-import { createAccessToken, createSession } from "../service/session.service";
+import { createAccessToken, createSession, findSessions } from "../service/session.service";
 import config from "config";
 import { sign } from "../util/jwt.utils";
 import { get } from "lodash";
@@ -36,4 +36,10 @@ export const  invalidateUserSessionHandler = async (req:Request ,res:Response) =
   console.log('sessionId',sessionId);
   await updateSession({_id: sessionId},{valid: false});
   return res.sendStatus(200);
+}
+
+export const getUserSessionsHandler = async (req:Request , res:Response)=>{
+  const userId = get(req,"user._id");
+  const sessions = await findSessions({user:userId,valid:true});
+  return res.status(200).send(sessions);
 }

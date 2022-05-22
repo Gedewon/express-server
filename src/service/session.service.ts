@@ -1,6 +1,6 @@
 import config from "config";
 import { get } from "lodash";
-import { LeanDocument } from "mongoose";
+import { FilterQuery, LeanDocument } from "mongoose";
 import Session, { SessionDocument } from "../model/session.model";
 import { UserDocument } from "../model/user.model";
 import { decode, sign } from "../util/jwt.utils";
@@ -55,4 +55,7 @@ export async function reIssueToken(
 
 }
 
+export async function findSessions(query: FilterQuery<SessionDocument>) {
+  return Session.findOne(query).lean();
+}
 
