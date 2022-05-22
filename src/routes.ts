@@ -20,12 +20,10 @@ export default (app: Express) => {
   //create a user
   app.post("/api/user", 
   validateRequest(createUserSchema),
-   
   createUserHandler);
 
   // Login
-  app.post(
-    "/api/sessions",
+  app.post("/api/sessions",
     validateRequest(createUserSessionSchema),
     createUserSessionHandler
   );
@@ -34,6 +32,6 @@ export default (app: Express) => {
 
   // Logout rout 
   app.delete("/api/session",
-      requireUser
-     ,invalidateUserSessionHandler);
+      requireUser,
+      invalidateUserSessionHandler);
 };

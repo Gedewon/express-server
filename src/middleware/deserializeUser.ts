@@ -8,12 +8,16 @@ export default  async (
   res: Response,
   next: NextFunction
 ) => {
+  console.log('the comming request',req);
   const accessToken = get(req, "headers.authorization", "").replace(
     /^Bearer\s/,
     ""
   );
-
+  console.log('acessToken',accessToken);
+  
   const refershToken = get(req, "headers.x-refersh");
+  
+  console.log('refershToken',refershToken);
 
   if (!createAccessToken) return next();
 
