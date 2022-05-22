@@ -53,11 +53,13 @@ To get a local copy up and running follow these simple example steps.
 cd express-API
 ```
 
-3.install node dependency and open index.html with live server
+3. install node dependency and open index.html with live server
 
 ```sh
  yarn  && yarn dev
 ```
+4. then paly around with this [http endpoint](https://github.com/Gedewon/express-API/blob/main/collection.http)
+
 
 👤 **Gedewon**
 
