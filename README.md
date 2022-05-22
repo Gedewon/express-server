@@ -2,7 +2,6 @@
 
 ## Built With
 
-- [x] REST APIs
 - [x] JWTs & refresh tokens
 - [x] Node.js
 - [x] TypeScript
