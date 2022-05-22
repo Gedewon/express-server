@@ -59,6 +59,7 @@ cd express-API
  yarn  && yarn dev
 ```
 4. then paly around with this [http endpoint](https://github.com/Gedewon/express-API/blob/main/collection.http)
+   don't forget to replace token with your own generated onces after  login
 
 
 👤 **Gedewon**
