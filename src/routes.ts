@@ -8,6 +8,7 @@ import { createUserSessionHandler, invalidateUserSessionHandler } from "./contro
 import validateRequest from "./middleware/validateRequest";
 import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
+import requireUser from "./middleware/requireUser";
 
 export default (app: Express) => {
   app.get("/healthcheck", (req: Request, res: Response) => {
@@ -33,6 +34,6 @@ export default (app: Express) => {
 
   // Logout rout 
   app.delete("/api/session",
-       requiredUserr
+      requireUser
      ,invalidateUserSessionHandler);
 };
