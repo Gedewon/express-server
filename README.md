@@ -14,7 +14,7 @@
 
 expressjs-server/    contains the express  server code
  ```
-└── config              # Express, log and   database configurations
+└── config              # _default configurations (port,db,token ttl , privatekey)
 └── src
     ├── controller      # Controller logic goes here          
     ├── middleware      # Middleware 
