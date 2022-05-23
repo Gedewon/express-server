@@ -14,7 +14,10 @@ import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
 import requireUser from "./middleware/requireUser";
 import { createPostSchema } from "./schema/post.schema";
-import { createPostHandler } from "./controller/post.controller";
+import {
+  createPostHandler,
+  updatePostHandler,
+} from "./controller/post.controller";
 
 export default (app: Express) => {
   app.get("/healthcheck", (req: Request, res: Response) => {
