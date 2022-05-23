@@ -24,3 +24,7 @@ export function findAndUpdate(
 ) {
   return Post.findOneAndUpdate(query, update, options);
 }
+
+export function deletePost(query: FilterQuery<PostDocument>) {
+  return Post.deleteOne(query);
+}

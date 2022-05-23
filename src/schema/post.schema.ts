@@ -12,3 +12,18 @@ const payload = {
 export const createPostSchema = object({
   ...payload,
 });
+
+const params = {
+  params: object({
+    postId: string().required("postId is required"),
+  }),
+};
+
+export const updatePostSchema = object({
+  ...params,
+  ...payload,
+});
+
+export const deletePostSchema = object({
+  ...params,
+});
