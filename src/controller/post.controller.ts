@@ -29,3 +29,17 @@ export async function updatePostHandler(req: Request, res: Response) {
 
   return res.send(updatedPost);
 }
+
+
+
+export async function getPostHandler(req: Request, res: Response) {
+    const postId = get(req, "params.postId");
+    const post = await findPost({ postId });
+  
+    if (!post) {
+      return res.sendStatus(404);
+    }
+  
+    return res.send(post);
+  }
+  
