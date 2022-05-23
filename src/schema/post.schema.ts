@@ -10,6 +10,5 @@ const payload = {
 };
 
 export const createPostSchema = object({
-    ...payload,
-  });
-  
+  ...payload,
+});

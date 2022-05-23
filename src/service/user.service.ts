@@ -32,6 +32,7 @@ export async function validatePassword({
   return omit(user.toJSON(), "password");
 }
 
-export const updateSession =async (query:FilterQuery<SessionDocument>,update: UpdateQuery<SessionDocument>) => {
-  
-}
+export const updateSession = async (
+  query: FilterQuery<SessionDocument>,
+  update: UpdateQuery<SessionDocument>
+) => {};

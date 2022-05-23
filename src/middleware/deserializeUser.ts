@@ -2,19 +2,14 @@ import { Request, Response, NextFunction } from "express";
 import { get } from "lodash";
 import { string } from "yup";
 import { createAccessToken, reIssueToken } from "../service/session.service";
-import {decode} from "../util/jwt.utils"
-export default  async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+import { decode } from "../util/jwt.utils";
+export default async (req: Request, res: Response, next: NextFunction) => {
   const accessToken = get(req, "headers.authorization", "").replace(
     /^Bearer\s/,
     ""
   );
-  
+
   const refershToken = get(req, "headers.x-refersh");
-  
 
   if (!accessToken) return next();
 
@@ -36,7 +31,7 @@ export default  async (
    */
 
   if (expired && refershToken) {
-    const newAccessToken = await reIssueToken( refershToken );
+    const newAccessToken = await reIssueToken(refershToken);
 
     if (newAccessToken) {
       //   Add the new access token to the response header
