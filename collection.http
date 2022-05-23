@@ -68,3 +68,6 @@ x-refersh :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjI4YTUxZjgwMjA4Yjk2
   "title":"have to chnage role!! i got into FANG",
   "body": "this is odd now i have to interview again :)"
 }
+
+### Get post id 
+GET  http://localhost:1337/api/posts/T0poCd2Je4
