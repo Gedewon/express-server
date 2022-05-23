@@ -9,6 +9,7 @@ import validateRequest from "./middleware/validateRequest";
 import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
 import requireUser from "./middleware/requireUser";
+import { createPostSchema } from "./schema/post.schema";
 
 export default (app: Express) => {
   app.get("/healthcheck", (req: Request, res: Response) => {
