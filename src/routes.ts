@@ -60,8 +60,7 @@ export default (app: Express) => {
 
   //TODO - GET A POST
   app.get(
-    "/api/posts/",
-    [requireUser, validateRequest(createPostSchema)],
+    "/api/posts/:postId",
     getPostHandler
   );
 
