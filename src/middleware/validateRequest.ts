@@ -4,6 +4,7 @@ import log from "../logger";
 
 export default (schema: AnySchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
+    //? validate the req data to the schema provided
     try {
       await schema.validate({
         body: req.body,

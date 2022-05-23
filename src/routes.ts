@@ -4,11 +4,17 @@ import {
   getUserHandler,
   getUsersHandler,
 } from "./controller/user.controller";
-import { createUserSessionHandler, getUserSessionsHandler, invalidateUserSessionHandler } from "./controller/session.controller";
+import {
+  createUserSessionHandler,
+  getUserSessionsHandler,
+  invalidateUserSessionHandler,
+} from "./controller/session.controller";
 import validateRequest from "./middleware/validateRequest";
 import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
 import requireUser from "./middleware/requireUser";
+import { createPostSchema } from "./schema/post.schema";
+import { createPostHandler } from "./controller/post.controller";
 
 export default (app: Express) => {
   app.get("/healthcheck", (req: Request, res: Response) => {
@@ -18,22 +24,30 @@ export default (app: Express) => {
   app.get("/api/users/:id", getUserHandler);
 
   //create a user
-  app.post("/api/user", 
-  validateRequest(createUserSchema),
-  createUserHandler);
+  app.post("/api/user", validateRequest(createUserSchema), createUserHandler);
 
   // Login
-  app.post("/api/sessions",
+  app.post(
+    "/api/sessions",
     validateRequest(createUserSessionSchema),
     createUserSessionHandler
   );
 
   // Get the user's sessions
 
-  app.get("/api/sessions", requireUser,getUserSessionsHandler);
+  app.get("/api/sessions", requireUser, getUserSessionsHandler);
 
-  // Logout rout 
-  app.delete("/api/sessions",
-      requireUser,
-      invalidateUserSessionHandler);
+  // Logout rout
+  app.delete("/api/sessions", requireUser, invalidateUserSessionHandler);
+
+  //- TODO - create a post
+  app.post(
+    "/api/posts",
+    [requireUser, validateRequest(createPostSchema)],
+    createPostHandler
+  );
+
+  //TODO - GET A POST
+
+  //TODO - DELETE A POST
 };

@@ -27,35 +27,28 @@ export function createAccessToken({
   return accessToken;
 }
 
-
-export async function reIssueToken(
-  refershToken :string
-) {
+export async function reIssueToken(refershToken: string) {
   /**
-   * 1.Decode the refresh token 
+   * 1.Decode the refresh token
    * 2.Get the session
-   * 3.Make sure the session is till valid 
+   * 3.Make sure the session is till valid
    */
-  const {decoded } = decode(refershToken);
-  if(!decoded || !get(decoded,"_id")) return false;
+  const { decoded } = decode(refershToken);
+  if (!decoded || !get(decoded, "_id")) return false;
 
-  const session = await Session.findById(get(decoded,"_id"));
+  const session = await Session.findById(get(decoded, "_id"));
 
-  if(!session || !session?.valid) return false;
+  if (!session || !session?.valid) return false;
 
-  const user = await findUser({_id:session.user});;
+  const user = await findUser({ _id: session.user });
 
-  if(!user) return false;
+  if (!user) return false;
 
-  const accessToken = createAccessToken({user,session});
+  const accessToken = createAccessToken({ user, session });
 
   return accessToken;
-
-
-
 }
 
 export async function findSessions(query: FilterQuery<SessionDocument>) {
   return Session.findOne(query).lean();
 }
-

@@ -1,4 +1,4 @@
-#  REST-API  
+# REST-API
 
 ## Built With
 
@@ -11,22 +11,20 @@
 
 ![diagram](https://user-images.githubusercontent.com/56429354/169705372-63853102-b94b-4b39-8fb4-ac32ebf43949.png)
 
-
-expressjs-server/    contains the express  server code
- ```
-└── config              # _default configurations (port,db,token ttl , privatekey)
-└── src
-    ├── controller      # Controller logic goes here          
-    ├── middleware      # Middleware 
-    ├── service         # Db query logic goes here  
-    ├── modles
-    |   └──             # contain model to database
-    ├── utils           # contains wrapper functions to sign and verify our jwt
-    └── app.ts          # default  entry point
+expressjs-server/ contains the express server code
 
 ```
+└── config              # _default configurations (port,db,token ttl , privatekey)
+└── src
+   ├── controller      # Controller logic goes here
+   ├── middleware      # Middleware
+   ├── service         # Db query logic goes here
+   ├── modles
+   |   └──             # contain model to database
+   ├── utils           # contains wrapper functions to sign and verify our jwt
+   └── app.ts          # default  entry point
 
-
+```
 
 ## Getting Started
 
@@ -57,9 +55,9 @@ cd express-API
 ```sh
  yarn  && yarn dev
 ```
-4. then paly around with this [http endpoint](https://github.com/Gedewon/express-API/blob/main/collection.http)
-   don't forget to replace token with your own generated onces after  login
 
+4. then paly around with this [http endpoint](https://github.com/Gedewon/express-API/blob/main/collection.http)
+   don't forget to replace token with your own generated onces after login
 
 👤 **Gedewon**
 

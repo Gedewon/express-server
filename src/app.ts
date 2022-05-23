@@ -9,9 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(deserializeUser)
-
-
+app.use(deserializeUser);
 
 app.listen(port, host, () => {
   // since node js is single traded and console.log will block IO service so
