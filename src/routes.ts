@@ -36,4 +36,15 @@ export default (app: Express) => {
   app.delete("/api/sessions",
       requireUser,
       invalidateUserSessionHandler);
+
+
+  //TODO - create a post 
+  app.post('/api/posts',
+  [requireUser,validateRequest(createPostSchema)]
+    ,createPostHandler);
+
+
+  //TODO - GET A POST 
+
+  //TODO - DELETE A POST
 };
