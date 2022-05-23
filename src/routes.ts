@@ -13,7 +13,11 @@ import validateRequest from "./middleware/validateRequest";
 import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
 import requireUser from "./middleware/requireUser";
-import { createPostSchema } from "./schema/post.schema";
+import {
+  createPostSchema,
+  deletePostSchema,
+  updatePostSchema,
+} from "./schema/post.schema";
 import {
   createPostHandler,
   updatePostHandler,
@@ -55,14 +59,14 @@ export default (app: Express) => {
   //- TODO - UPDATE A POST
   app.put(
     "/api/posts/:postId",
-    [requireUser, validateRequest(createPostSchema)],
+    [requireUser, validateRequest(updatePostSchema)],
     updatePostHandler
   );
 
   //- TODO - GET A POST
   app.get("/api/posts/:postId", getPostHandler);
 
-  //TODO - DELETE A POST
+  // - TODO - DELETE A POST
   app.delete(
     "/api/posts/:postId",
     [requireUser, validateRequest(deletePostSchema)],

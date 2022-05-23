@@ -19,7 +19,6 @@ const params = {
   }),
 };
 
-
 export const updatePostSchema = object({
   ...params,
   ...payload,
