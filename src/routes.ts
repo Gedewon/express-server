@@ -47,6 +47,13 @@ export default (app: Express) => {
     createPostHandler
   );
 
+  //TODO - UPDATE A POST
+  app.put(
+    "/api/posts/:postId",
+    [requireUser, validateRequest(createPostSchema)],
+    updatePostHandler
+  );
+
   //TODO - GET A POST
 
   //TODO - DELETE A POST
