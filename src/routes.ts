@@ -50,7 +50,7 @@ export default (app: Express) => {
     createPostHandler
   );
 
-  //TODO - UPDATE A POST
+  //- TODO - UPDATE A POST
   app.put(
     "/api/posts/:postId",
     [requireUser, validateRequest(createPostSchema)],
