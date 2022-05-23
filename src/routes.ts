@@ -65,7 +65,7 @@ export default (app: Express) => {
   //TODO - DELETE A POST
   app.delete(
     "/api/posts/:postId",
-    [requireUser, validateRequest(createPostSchema)],
+    [requireUser, validateRequest(deletePostSchema)],
     deletePostHandler
   );
 };

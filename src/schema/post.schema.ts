@@ -12,3 +12,13 @@ const payload = {
 export const createPostSchema = object({
   ...payload,
 });
+
+
+export const updatePostSchema = object({
+  ...params,
+  ...payload,
+});
+
+export const deletePostSchema = object({
+  ...params,
+});
