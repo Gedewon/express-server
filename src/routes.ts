@@ -17,6 +17,7 @@ import { createPostSchema } from "./schema/post.schema";
 import {
   createPostHandler,
   updatePostHandler,
+  getPostHandler
 } from "./controller/post.controller";
 
 export default (app: Express) => {
@@ -58,6 +59,11 @@ export default (app: Express) => {
   );
 
   //TODO - GET A POST
+  app.get(
+    "/api/posts/",
+    [requireUser, validateRequest(createPostSchema)],
+    getPostHandler
+  );
 
   //TODO - DELETE A POST
 };
