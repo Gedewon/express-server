@@ -1,6 +1,11 @@
 import { Response, Request } from "express";
 import { get } from "lodash";
-import { createPost, findPost, findAndUpdate } from "../service/post.service";
+import {
+  createPost,
+  findPost,
+  findAndUpdate,
+  deletePost,
+} from "../service/post.service";
 
 export const createPostHandler = async (req: Request, res: Response) => {
   const userId = get(req, "user._id");
@@ -30,16 +35,32 @@ export async function updatePostHandler(req: Request, res: Response) {
   return res.send(updatedPost);
 }
 
-
-
 export async function getPostHandler(req: Request, res: Response) {
-    const postId = get(req, "params.postId");
-    const post = await findPost({ postId });
-  
-    if (!post) {
-      return res.sendStatus(404);
-    }
-  
-    return res.send(post);
+  const postId = get(req, "params.postId");
+  const post = await findPost({ postId });
+
+  if (!post) {
+    return res.sendStatus(404);
   }
-  
+
+  return res.send(post);
+}
+
+export async function deletePostHandler(req: Request, res: Response) {
+  const userId = get(req, "user._id");
+  const postId = get(req, "params.postId");
+
+  const post = await findPost({ postId });
+
+  if (!post) {
+    return res.sendStatus(404);
+  }
+
+  if (String(post.user) !== String(userId)) {
+    return res.sendStatus(401);
+  }
+
+  await deletePost({ postId });
+
+  return res.sendStatus(200);
+}

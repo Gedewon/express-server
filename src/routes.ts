@@ -60,15 +60,12 @@ export default (app: Express) => {
   );
 
   //- TODO - GET A POST
-  app.get(
-    "/api/posts/:postId",
-    getPostHandler
-  );
+  app.get("/api/posts/:postId", getPostHandler);
 
   //TODO - DELETE A POST
   app.delete(
     "/api/posts/:postId",
     [requireUser, validateRequest(createPostSchema)],
     deletePostHandler
-  )
+  );
 };
