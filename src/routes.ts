@@ -14,6 +14,7 @@ import { createUserSchema } from "./schema/user.schema";
 import { createUserSessionSchema } from "./schema/session.schema";
 import requireUser from "./middleware/requireUser";
 import { createPostSchema } from "./schema/post.schema";
+import { createPostHandler } from "./controller/post.controller";
 
 export default (app: Express) => {
   app.get("/healthcheck", (req: Request, res: Response) => {
@@ -39,7 +40,7 @@ export default (app: Express) => {
   // Logout rout
   app.delete("/api/sessions", requireUser, invalidateUserSessionHandler);
 
-  //TODO - create a post
+  //- TODO - create a post
   app.post(
     "/api/posts",
     [requireUser, validateRequest(createPostSchema)],
